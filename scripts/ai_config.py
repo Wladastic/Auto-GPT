@@ -1,6 +1,7 @@
 import yaml
-import data
 import os
+from prompt import get_prompt
+
 
 class AIConfig:
     """
@@ -29,7 +30,7 @@ class AIConfig:
         self.ai_goals = ai_goals
 
     # Soon this will go in a folder where it remembers more stuff about the run(s)
-    SAVE_FILE = os.path.join(os.path.dirname(__file__), '..', 'ai_settings.yaml')
+    SAVE_FILE = os.path.join(os.path.dirname(__file__), '.', 'ai_settings.yaml')
 
     @classmethod
     def load(cls: object, config_file: str=SAVE_FILE) -> object:
@@ -46,7 +47,7 @@ class AIConfig:
         """
 
         try:
-            with open(config_file) as file:
+            with open(config_file, encoding='utf-8') as file:
                 config_params = yaml.load(file, Loader=yaml.FullLoader)
         except FileNotFoundError:
             config_params = {}
@@ -69,8 +70,8 @@ class AIConfig:
         """
 
         config = {"ai_name": self.ai_name, "ai_role": self.ai_role, "ai_goals": self.ai_goals}
-        with open(config_file, "w") as file:
-            yaml.dump(config, file)
+        with open(config_file, "w",  encoding='utf-8') as file:
+            yaml.dump(config, file, allow_unicode=True)
 
     def construct_full_prompt(self) -> str:
         """
@@ -90,5 +91,5 @@ class AIConfig:
         for i, goal in enumerate(self.ai_goals):
             full_prompt += f"{i+1}. {goal}\n"
 
-        full_prompt += f"\n\n{data.load_prompt()}"
+        full_prompt += f"\n\n{get_prompt()}"
         return full_prompt

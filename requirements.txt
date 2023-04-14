@@ -17,3 +17,6 @@ orjson
 Pillow
 coverage
 flake8
+numpy
+SpeechRecognition
+python-telegram-bot
