@@ -1,7 +1,7 @@
 """Agent manager for managing GPT agents"""
 from typing import List, Tuple, Union
-from autogpt.llm_utils import create_chat_completion
-from autogpt.config.config import Singleton
+from llm_utils import create_chat_completion
+from config.config import Singleton
 
 
 class AgentManager(metaclass=Singleton):

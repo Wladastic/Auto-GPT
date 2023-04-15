@@ -3,16 +3,16 @@ import argparse
 import asyncio
 import json
 import logging
-from autogpt.agent.agent import Agent
-from autogpt.args import parse_arguments
+from agent.agent import Agent
+from args import parse_arguments
 
-from autogpt.config import Config, check_openai_api_key
-from autogpt.logs import logger
-from autogpt.memory import get_memory
+from config import Config, check_openai_api_key
+from logs import logger
+from memory import get_memory
 
-from autogpt.prompt import construct_prompt
+from prompt import construct_prompt
 
-# Load environment variables from .env file
+# Load environment variables from env file
 
 
 def main() -> None:

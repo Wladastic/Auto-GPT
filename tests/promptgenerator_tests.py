@@ -3,7 +3,7 @@ import os
 import sys
 import unittest
 
-from autogpt.promptgenerator import PromptGenerator
+from promptgenerator import PromptGenerator
 
 
 # Create a test class for the PromptGenerator, subclassed from unittest.TestCase

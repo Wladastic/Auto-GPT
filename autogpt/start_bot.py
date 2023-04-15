@@ -7,10 +7,10 @@ from threading import Lock, Semaphore
 
 from telegram import Update
 from telegram.ext import Application, CallbackContext, CommandHandler, filters, MessageHandler
-from autogpt.config.config import Config
+from config.config import Config
 
 
-from autogpt.telegram_chat import TelegramUtils, handle_response, is_authorized_user
+from telegram_chat import TelegramUtils, handle_response, is_authorized_user
 
 cfg = Config()
 

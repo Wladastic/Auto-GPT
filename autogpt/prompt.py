@@ -1,10 +1,10 @@
 from colorama import Fore
-from autogpt.config.ai_config import AIConfig
-from autogpt.config.config import Config
-from autogpt.logs import logger
-from autogpt.promptgenerator import PromptGenerator
-from autogpt.setup import prompt_user
-from autogpt.utils import clean_input
+from config.ai_config import AIConfig
+from config.config import Config
+from logs import logger
+from promptgenerator import PromptGenerator
+from setup import prompt_user
+from utils import clean_input
 
 CFG = Config()
 

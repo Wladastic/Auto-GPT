@@ -1,9 +1,9 @@
 import argparse
 import logging
 
-from autogpt.config import Config
-from autogpt.commands.file_operations import ingest_file, search_files
-from autogpt.memory import get_memory
+from config import Config
+from commands.file_operations import ingest_file, search_files
+from memory import get_memory
 
 cfg = Config()
 

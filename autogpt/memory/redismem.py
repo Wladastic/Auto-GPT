@@ -8,8 +8,8 @@ from redis.commands.search.field import TextField, VectorField
 from redis.commands.search.indexDefinition import IndexDefinition, IndexType
 from redis.commands.search.query import Query
 
-from autogpt.logs import logger
-from autogpt.memory.base import MemoryProviderSingleton, get_ada_embedding
+from logs import logger
+from memory.base import MemoryProviderSingleton, get_ada_embedding
 
 SCHEMA = [
     TextField("data"),

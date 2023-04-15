@@ -8,7 +8,7 @@ import openai
 import requests
 from PIL import Image
 from pathlib import Path
-from autogpt.config import Config
+from config import Config
 
 CFG = Config()
 

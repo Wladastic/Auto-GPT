@@ -6,8 +6,8 @@ import requests
 from requests import Response
 from bs4 import BeautifulSoup
 
-from autogpt.config import Config
-from autogpt.memory import get_memory
+from config import Config
+from memory import get_memory
 
 CFG = Config()
 memory = get_memory(CFG)

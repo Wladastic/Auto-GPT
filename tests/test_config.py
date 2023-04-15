@@ -1,6 +1,6 @@
 import unittest
 
-from autogpt.config import Config
+from config import Config
 
 
 class TestConfig(unittest.TestCase):

@@ -3,7 +3,7 @@ import os
 import requests
 from playsound import playsound
 
-from autogpt.speech.base import VoiceBase
+from speech.base import VoiceBase
 
 
 class BrianSpeech(VoiceBase):

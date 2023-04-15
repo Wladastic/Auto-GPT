@@ -4,7 +4,7 @@ from typing import List, Union
 
 from duckduckgo_search import ddg
 
-from autogpt.config import Config
+from config import Config
 
 CFG = Config()
 

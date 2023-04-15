@@ -1,7 +1,7 @@
 import json
 from typing import List
 
-from autogpt.llm_utils import call_ai_function
+from llm_utils import call_ai_function
 
 
 def improve_code(suggestions: List[str], code: str) -> str:

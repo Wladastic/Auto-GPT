@@ -6,7 +6,7 @@ import openai
 from openai.error import APIError, RateLimitError
 from colorama import Fore
 
-from autogpt.config import Config
+from config import Config
 
 CFG = Config()
 

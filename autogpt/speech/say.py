@@ -1,12 +1,12 @@
 """ Text to speech module """
-from autogpt.config import Config
+from config import Config
 
 import threading
 from threading import Semaphore
-from autogpt.speech.brian import BrianSpeech
-from autogpt.speech.macos_tts import MacOSTTS
-from autogpt.speech.gtts import GTTSVoice
-from autogpt.speech.eleven_labs import ElevenLabsSpeech
+from speech.brian import BrianSpeech
+from speech.macos_tts import MacOSTTS
+from speech.gtts import GTTSVoice
+from speech.eleven_labs import ElevenLabsSpeech
 
 
 CFG = Config()

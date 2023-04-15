@@ -10,7 +10,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 import logging
 from pathlib import Path
-from autogpt.config import Config
+from config import Config
 
 FILE_DIR = Path(__file__).parent.parent
 CFG = Config()

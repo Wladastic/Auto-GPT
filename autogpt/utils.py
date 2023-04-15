@@ -1,10 +1,10 @@
-from autogpt.telegram_chat import TelegramUtils
+from telegram_chat import TelegramUtils
+from speech import say as speak
 import speech_recognition as sr
-import autogpt.speech.say as speak
 import traceback
 import asyncio
 
-from autogpt.config.config import Config
+from config.config import Config
 cfg = Config()
 
 def clean_input(prompt: str = "", talk=False):

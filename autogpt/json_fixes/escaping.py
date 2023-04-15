@@ -1,8 +1,8 @@
 """ Fix invalid escape sequences in JSON strings. """
 import json
 
-from autogpt.config import Config
-from autogpt.json_fixes.utilities import extract_char_position
+from config import Config
+from json_fixes.utilities import extract_char_position
 
 CFG = Config()
 

@@ -1,7 +1,7 @@
 """This module contains the function to fix JSON strings using GPT-3."""
 import json
-from autogpt.llm_utils import call_ai_function
-from autogpt.logs import logger
+from llm_utils import call_ai_function
+from logs import logger
 
 
 def fix_json(json_str: str, schema: str) -> str:

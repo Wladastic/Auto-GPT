@@ -2,7 +2,7 @@
 
 import requests
 
-from autogpt.commands.web_requests import scrape_text
+from commands.web_requests import scrape_text
 
 """
 Code Analysis

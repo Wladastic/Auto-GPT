@@ -1,8 +1,8 @@
 import pinecone
 from colorama import Fore, Style
 
-from autogpt.logs import logger
-from autogpt.memory.base import MemoryProviderSingleton, get_ada_embedding
+from logs import logger
+from memory.base import MemoryProviderSingleton, get_ada_embedding
 
 
 class PineconeMemory(MemoryProviderSingleton):

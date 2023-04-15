@@ -1,15 +1,15 @@
 from colorama import Fore, Style
-from autogpt.app import execute_command, get_command
+from app import execute_command, get_command
 
-from autogpt.chat import chat_with_ai, create_chat_message
-from autogpt.config import Config
-from autogpt.json_fixes.bracket_termination import (
+from chat import chat_with_ai, create_chat_message
+from config import Config
+from json_fixes.bracket_termination import (
     attempt_to_fix_json_by_finding_outermost_brackets,
 )
-from autogpt.logs import logger, print_assistant_thoughts
-from autogpt.speech import say_text
-from autogpt.spinner import Spinner
-from autogpt.utils import clean_input
+from logs import logger, print_assistant_thoughts
+from speech import say_text
+from spinner import Spinner
+from utils import clean_input
 
 
 class Agent:

@@ -4,12 +4,12 @@ import contextlib
 import json
 from typing import Any, Dict, Union
 
-from autogpt.config import Config
-from autogpt.json_fixes.auto_fix import fix_json
-from autogpt.json_fixes.bracket_termination import balance_braces
-from autogpt.json_fixes.escaping import fix_invalid_escape
-from autogpt.json_fixes.missing_quotes import add_quotes_to_property_names
-from autogpt.logs import logger
+from config import Config
+from json_fixes.auto_fix import fix_json
+from json_fixes.bracket_termination import balance_braces
+from json_fixes.escaping import fix_invalid_escape
+from json_fixes.missing_quotes import add_quotes_to_property_names
+from logs import logger
 
 CFG = Config()
 

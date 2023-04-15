@@ -2,13 +2,13 @@
 import os
 from colorama import Fore
 
-from autogpt.config.singleton import Singleton
 
 import openai
 import yaml
 
 from dotenv import load_dotenv
 
+from .singleton import Singleton
 load_dotenv(verbose=True)
 
 

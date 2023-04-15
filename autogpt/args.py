@@ -3,9 +3,9 @@ import argparse
 
 from colorama import Fore
 from autogpt import utils
-from autogpt.config import Config
-from autogpt.logs import logger
-from autogpt.memory import get_supported_memory_backends
+from config import Config
+from logs import logger
+from memory import get_supported_memory_backends
 
 CFG = Config()
 

@@ -3,7 +3,7 @@ from typing import Dict, List
 
 import tiktoken
 
-from autogpt.logs import logger
+from logs import logger
 
 
 def count_message_tokens(

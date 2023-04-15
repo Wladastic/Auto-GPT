@@ -1,7 +1,7 @@
 """Code evaluation module."""
 from typing import List
 
-from autogpt.llm_utils import call_ai_function
+from llm_utils import call_ai_function
 
 
 def evaluate_code(code: str) -> List[str]:

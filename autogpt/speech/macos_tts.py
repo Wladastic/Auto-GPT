@@ -1,7 +1,7 @@
 """ MacOS TTS Voice. """
 import os
 
-from autogpt.speech.base import VoiceBase
+from speech.base import VoiceBase
 
 
 class MacOSTTS(VoiceBase):

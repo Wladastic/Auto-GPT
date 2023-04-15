@@ -1,27 +1,27 @@
 """ Command and Control """
 import json
 from typing import List, NoReturn, Union
-from autogpt.agent.agent_manager import AgentManager
-from autogpt.commands.evaluate_code import evaluate_code
-from autogpt.commands.google_search import google_official_search, google_search
-from autogpt.commands.improve_code import improve_code
-from autogpt.commands.write_tests import write_tests
-from autogpt.config import Config
-from autogpt.commands.image_gen import generate_image
-from autogpt.commands.web_requests import scrape_links, scrape_text
-from autogpt.commands.execute_code import execute_python_file, execute_shell
-from autogpt.commands.file_operations import (
+from agent.agent_manager import AgentManager
+from commands.evaluate_code import evaluate_code
+from commands.google_search import google_official_search, google_search
+from commands.improve_code import improve_code
+from commands.write_tests import write_tests
+from config import Config
+from commands.image_gen import generate_image
+from commands.web_requests import scrape_links, scrape_text
+from commands.execute_code import execute_python_file, execute_shell
+from commands.file_operations import (
     append_to_file,
     delete_file,
     read_file,
     search_files,
     write_to_file,
 )
-from autogpt.json_fixes.parsing import fix_and_parse_json
-from autogpt.memory import get_memory
-from autogpt.processing.text import summarize_text
-from autogpt.speech import say_text
-from autogpt.commands.web_selenium import browse_website
+from json_fixes.parsing import fix_and_parse_json
+from memory import get_memory
+from processing.text import summarize_text
+from speech import say_text
+from commands.web_selenium import browse_website
 
 
 CFG = Config()

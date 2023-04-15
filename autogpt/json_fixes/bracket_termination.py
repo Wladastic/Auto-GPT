@@ -5,9 +5,9 @@ from typing import Optional
 import regex
 from colorama import Fore
 
-from autogpt.logs import logger
-from autogpt.config import Config
-from autogpt.speech import say_text
+from logs import logger
+from config import Config
+from speech import say_text
 
 CFG = Config()
 
