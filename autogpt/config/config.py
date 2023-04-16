@@ -2,7 +2,10 @@
 import os
 from colorama import Fore
 
-from autogpt.config.singleton import Singleton
+try:
+    from autogpt.config.singleton import Singleton
+except ModuleNotFoundError:
+    from config.singleton import Singleton
 
 import openai
 import yaml
@@ -60,6 +63,7 @@ class Config(metaclass=Singleton):
         self.telegram_enabled = os.getenv("TELEGRAM_ENABLED") == 'True'
         self.telegram_api_key = os.getenv("TELEGRAM_API_KEY")
         self.telegram_chat_id = os.getenv("TELEGRAM_CHAT_ID")
+        self.telegram_voice_enabled = os.getenv("TELEGRAM_VOICE_ENABLED") == 'False'
 
         self.use_brian_tts = False
         self.use_brian_tts = os.getenv("USE_BRIAN_TTS")
