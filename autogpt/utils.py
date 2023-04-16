@@ -1,11 +1,12 @@
-from telegram_chat import TelegramUtils
+from autogpt.telegram_chat import TelegramUtils
 import speech_recognition as sr
-import speak
+import autogpt.speech.say as speak
 import traceback
 import asyncio
 
-from config import Config
+from autogpt.config.config import Config
 cfg = Config()
+
 
 def clean_input(prompt: str = "", talk=False):
     try:
@@ -15,22 +16,21 @@ def clean_input(prompt: str = "", talk=False):
             except:
                 print(traceback.format_exc())
                 print("Siri could not understand your input.")
-                speak.macos_tts_speech("I didn't understand that. Sorry.")
+                speak.say_text("I didn't understand that. Sorry.")
                 return input(prompt)
         else:
             if cfg.telegram_enabled:
                 print("Asking user via Telegram...")
-                loop = asyncio.get_event_loop()
                 telegramUtils = TelegramUtils()
-                chat_answer = loop.run_until_complete(telegramUtils.ask_user(prompt=prompt))
+                chat_answer = telegramUtils.ask_user(prompt=prompt)
                 print("Telegram answer: " + chat_answer)
                 if chat_answer in ["yes", "yeah", "yep", "yup", "y", "ok", "okay", "sure", "affirmative", "aye", "aye aye", "alright", "alrighty"]:
                     return "y"
                 elif chat_answer in ["no", "nope", "n", "nah", "negative", "nay", "nay nay"]:
                     return "n"
                 return chat_answer
-                      
-            ## ask for input, default when just pressing Enter is y
+
+            # ask for input, default when just pressing Enter is y
             print("Asking user via keyboard...")
             answer = input(prompt + ' [y/n] or press Enter for default (y): ')
             if answer == '':
@@ -83,6 +83,7 @@ def voice_input(prompt: str = "", voice_prompt_counter: int = 0):
         print("You interrupted Auto-GPT")
         print("Quitting...")
         exit(0)
+
 
 def validate_yaml_file(file: str):
     try:

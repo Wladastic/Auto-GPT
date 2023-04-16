@@ -7,9 +7,10 @@ from threading import Lock, Semaphore
 
 from telegram import Update
 from telegram.ext import Application, CallbackContext, CommandHandler, filters, MessageHandler
+from autogpt.config.config import Config
 
-from config import Config
-from telegram_chat import TelegramUtils, handle_response, is_authorized_user
+
+from autogpt.telegram_chat import TelegramUtils, handle_response, is_authorized_user
 
 cfg = Config()
 
@@ -36,7 +37,7 @@ async def delete_old_messages():
         print("Deleting message: " + update.message.text)
         await bot.delete_message(chat_id=cfg.telegram_chat_id, message_id=update.message.message_id)
         count += 1
-    if(count > 0):
+    if (count > 0):
         print("Cleaned up old messages.")
 
 
@@ -44,20 +45,12 @@ async def start(update: Update, context: CallbackContext):
     global main_started
     print("Starting Auto-GPT...")
     if is_authorized_user(update):
-        if main_started :
+        if main_started:
             TelegramUtils.send_message("Already started!")
         else:
             main_started = True
             TelegramUtils.send_message("Auto-GPT is starting now!")
-            os.system("python3 ./autogpt/__main__.py {}".format(" ".join(sys.argv[1:])))
-
-
-
-def get_or_create_eventloop():
-    print("___.  Creating new event loop...")
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    return asyncio.get_event_loop()
+            os.system("python -m autogpt {}".format(" ".join(sys.argv[1:])))
 
 
 def main():
@@ -81,6 +74,7 @@ def main():
     except KeyboardInterrupt:
         pass
 
+
 if __name__ == "__main__":
     try:
         main()
@@ -91,7 +85,7 @@ if __name__ == "__main__":
         print("Exiting...")
         TelegramUtils.send_message(
             "I hope I could help! :) \n \n Bye bye! <3")
-       
+
         exit(0)
     except Exception as e:
         print(e)
