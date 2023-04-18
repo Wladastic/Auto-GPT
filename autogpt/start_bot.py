@@ -25,7 +25,7 @@ queue_semaphore = Semaphore(1)
 
 async def stop(update: Update, context: CallbackContext):
     if is_authorized_user(update):
-        process = os.popen('ps -Af')
+        process = os.popen("ps -Af")
         output = process.read()
         process.close()
         if "python -m autogpt" in output:
@@ -41,20 +41,32 @@ async def start(update: Update, context: CallbackContext):
     print("Starting Auto-GPT...")
     if is_authorized_user(update):
         # Check if operating system is Windows
-        if os.name == 'nt':
+        if os.name == "nt":
             # Check if main is still running
-            process = os.popen('tasklist')
+            process = os.popen("tasklist")
         else:
             # check if main is still running
-            process = os.popen('ps -Af')
+            process = os.popen("ps -Af")
         output = process.read()
         process.close()
         if "python -m autogpt" in output:
             await update.message.reply_text("Already started!")
             return
         else:
-            TelegramUtils.send_message("Auto-GPT is starting now!")
-            os.system("python -m autogpt {}".format(" ".join(sys.argv[1:])))
+            # check if python is installed, using python3 if not
+            if os.name == "nt":
+                # Check if main is still running
+                process = os.popen("where python")
+            else:
+                # check if main is still running
+                process = os.popen("which python")
+            output = process.read()
+            process.close
+            print(output)
+            if "python" in output:
+                os.system("python -m autogpt {}".format(" ".join(sys.argv[1:])))
+            else:
+                os.system("python3 -m autogpt {}".format(" ".join(sys.argv[1:])))
 
 
 def main():
@@ -67,7 +79,8 @@ def main():
     asyncio.run(telegramUtils.delete_old_messages())
 
     TelegramUtils().send_message(
-        "Hello! I need you to confirm with /start to start me. <3")
+        "Hello! I need you to confirm with /start to start me. <3"
+    )
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
@@ -90,13 +103,13 @@ if __name__ == "__main__":
         # thread.start()
     except KeyboardInterrupt:
         print("Exiting...")
-        TelegramUtils.send_message(
-            "I hope I could help! :) \n \n Bye bye! <3")
+        TelegramUtils.send_message("I hope I could help! :) \n \n Bye bye! <3")
 
         exit(0)
     except Exception as e:
         print(e)
         print(traceback.format_exc())
         TelegramUtils.send_message(
-            "Sorry, I have to stop. \n \n An error occurred: " + str(e))
+            "Sorry, I have to stop. \n \n An error occurred: " + str(e)
+        )
         exit(1)
