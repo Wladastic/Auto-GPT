@@ -1,3 +1,12 @@
+## ATTENTION!
+This used to be my telegram bot inside Auto-GPT.
+But as Auto-GPT has evolved, the new and supported Telegram bot is now a plugin.
+Please use this link: https://github.com/Wladastic/Auto-GPT-Telegram-Plugin
+
+If you want the old experience, feel free to clone this repo, but beware that it is not up to date.
+
+
+
 # Auto-GPT: An Autonomous GPT-4 Experiment
 [![Unit Tests](https://img.shields.io/github/actions/workflow/status/Significant-Gravitas/Auto-GPT/ci.yml?label=unit%20tests)](https://github.com/Significant-Gravitas/Auto-GPT/actions/workflows/ci.yml)
 [![Discord Follow](https://dcbadge.vercel.app/api/server/autogpt?style=flat)](https://discord.gg/autogpt)
