@@ -128,3 +128,47 @@ def test_scan_plugins_generic(mock_config_generic_plugin):
     # Test that the function returns the correct number of plugins
     result = scan_plugins(mock_config_generic_plugin, debug=True)
     assert len(result) == 1
+
+
+@pytest.fixture
+def mock_chat_plugins_for_logging():
+    """Mock config object for testing the scan_plugins function"""
+
+    # Test that the function returns the correct number of plugins
+    class MockConfig:
+        plugins_dir = PLUGINS_TEST_DIR
+        plugins_openai = []
+        plugins_denylist = []
+        plugins_allowlist = ["AutoGPTTelegram"]
+
+    return MockConfig()
+
+
+def test_scan_logger_or_report_plugins(mock_chat_plugins_for_logging):
+    # Test that the function returns the correct number of plugins
+    result = scan_plugins(mock_chat_plugins_for_logging, debug=True)
+
+    for plugin in result:
+        assert plugin.__class__.__name__ == "AutoGPTTelegram"
+
+    assert len(result) == 1
+
+
+@pytest.fixture
+def mock_config_ask_user_plugins():
+    """Mock config object for testing the scan_plugins function"""
+
+    # Test that the function returns the correct number of plugins
+    class MockConfig:
+        plugins_dir = PLUGINS_TEST_DIR
+        plugins_openai = []
+        plugins_denylist = []
+        plugins_allowlist = ["AutoGPTTelegram"]
+
+    return MockConfig()
+
+
+def test_scan_ask_user_plugins(mock_config_ask_user_plugins):
+    # Test that the function returns the correct number of plugins
+    result = scan_plugins(mock_config_ask_user_plugins, debug=True)
+    assert len(result) == 1
