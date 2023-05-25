@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import functools
+import json
 import time
 from itertools import islice
 from typing import List, Literal, Optional
@@ -129,7 +130,7 @@ def create_chat_completion(
     if temperature is None:
         temperature = cfg.temperature
 
-    num_retries = 10
+    num_retries = 4
     warned_user = False
     logger.debug(
         f"{Fore.GREEN}Creating chat completion with model {model}, temperature {temperature}, max_tokens {max_tokens}{Fore.RESET}"
@@ -141,14 +142,35 @@ def create_chat_completion(
             temperature=temperature,
             max_tokens=max_tokens,
         ):
-            message = plugin.handle_chat_completion(
-                messages=messages,
-                model=model,
-                temperature=temperature,
-                max_tokens=max_tokens,
-            )
-            if message is not None:
-                return message
+            print(f"Using plugin {plugin.__class__.__name__}")
+            print(f"messages: {messages}")
+            print(f"model: {model}")
+            print(f"temperature: {temperature}")
+            print(f"max_tokens: {max_tokens}")
+            valid_json = False
+            allowed_retries = 10
+            while not valid_json and allowed_retries > 0:
+                try: 
+                    allowed_retries -= 1
+                    message = plugin.handle_chat_completion(
+                        messages=messages,
+                        model=model,
+                        temperature=temperature,
+                        max_tokens=max_tokens,
+                    )
+                    if message is not None:
+                        print(f"message from plugin: {message}")
+                        # check if the message is a valid json
+                        json.loads(message)
+                        print("message is valid json!")
+                        valid_json = True
+                        print(f"message: {message}")
+                        exit(0)
+                except Exception as e:
+                    print(f"Invalid json: {e}")
+                    pass
+               # return message
+    exit(0)
     api_manager = ApiManager()
     response = None
     for attempt in range(num_retries):
@@ -163,12 +185,16 @@ def create_chat_completion(
                     max_tokens=max_tokens,
                 )
             else:
+                print(f"now using model {model}")
                 response = api_manager.create_chat_completion(
                     model=model,
                     messages=messages,
                     temperature=temperature,
                     max_tokens=max_tokens,
                 )
+                print(f"response:  {response}")
+            if response is not None:
+                return response
             break
         except RateLimitError:
             logger.debug(
